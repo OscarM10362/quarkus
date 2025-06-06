@@ -1,2 +1,0 @@
-# quarkus
-Examen final quarkus
