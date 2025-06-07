@@ -1,33 +1,28 @@
 package com.beesion.ms.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 public class Person {
 
-	private Long id;
-	private String name;
 
 	@Id
-	@SequenceGenerator(name = "PersonIdGenerator")
-	@GeneratedValue(generator = "PersonIdGenerator")
-	public Long getId() {
-		return id;
-	}
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PersonIdGenerator")
+	@SequenceGenerator(name = "PersonIdGenerator", sequenceName = "person_seq", allocationSize = 1)
+	private Long id;
+	@Column(nullable = false)
+	private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	// Getters y setters
+	public Long getId() { return id; }
 
-	public String getName() {
-		return name;
-	}
+	public void setId(Long id) { this.id = id; }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public String getName() { return name; }
 
+	public void setName(String name) { this.name = name; }
 }
+
+
+
